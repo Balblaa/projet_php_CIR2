@@ -28,7 +28,7 @@ CREATE TABLE public.Genre(
 
 
 ------------------------------------------------------------
--- Table: Médecin
+-- Table: Medecin
 ------------------------------------------------------------
 CREATE TABLE public.Medecin(
 	id_medecin      SERIAL NOT NULL ,
