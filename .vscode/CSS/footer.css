@@ -1,0 +1,29 @@
+footer{
+
+    background-color: #0077b6;
+    justify-content: space-between;
+
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    margin-bottom: 0%;
+    position: relative;
+    width: 100%;
+
+}
+
+li{
+
+    margin-top: 1%;
+    margin-bottom: 1%;
+    
+    background-color: #CAF0F8;
+    border-radius: 15%;
+
+}
+
+ul{
+
+    justify-content: space-around;
+
+}
