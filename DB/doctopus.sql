@@ -71,6 +71,3 @@ CREATE TABLE public.reserver(
 	,CONSTRAINT reserver_rendez_vous_FK FOREIGN KEY (id_rendez_vous) REFERENCES public.rendez_vous(id_rendez_vous)
 	,CONSTRAINT reserver_Utilisateur0_FK FOREIGN KEY (Adresse_Email) REFERENCES public.Utilisateur(Adresse_Email)
 )WITHOUT OIDS;
-
-
-
