@@ -26,19 +26,19 @@
                   <a class="nav-link active" aria-current="page" href="#">Active</a>
                 </li>-->
                 <li class="nav-item">
-                  <a class="nav-link" href="accueil.php">Accueil</a>
+                  <a class="nav-link" href="/PHP/accueil.php">Accueil</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="recherche.php">Recherche</a>
+                  <a class="nav-link" href="/PHP/recherche.php">Recherche</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="rendez_vous.php">Rendez-Vous</a>
+                  <a class="nav-link" href="/PHP/rendez_vous.php">Rendez-Vous</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="inscription.php">Inscrire</a>
+                  <a class="nav-link" href="/PHP/inscription.php">Inscrire</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="authentification.php">Connexion</a>
+                  <a class="nav-link" href="/PHP/authentification.php">Connexion</a>
                 </li>
                 <!--<li class="nav-item">
                   <a class="nav-link disabled" aria-disabled="true">Disabled</a>
@@ -53,15 +53,15 @@
 
                 <h1>Authentification</h1>
 
-                <form>
+                <form action="authentification.php" method="post">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
                         <!--<div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>-->
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
+                        <input type="password" class="form-control" id="exampleInputPassword1" name="password">
                     </div>
                     <!--<div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -73,6 +73,18 @@
                 <a href="inscription.php">Pas de compte, inscrivez-vous !</a>
 
             </div>
+
+            <?php
+        
+            $mail = $_POST['email'];
+            $mdp = $_POST['password'];
+
+            $requete = $conn->prepare("SELECT Prenom FROM Utilisateur WHERE Adresse_Email = :email AND mot_de_passe = :motdp;");
+            $requete->bindParam(':email', $mail);
+            $requete->bindParam(':motdp', $mdp);
+            $requete->execute();
+
+            ?>
 
         </main>
 
