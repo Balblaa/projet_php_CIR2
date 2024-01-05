@@ -26,19 +26,19 @@
                   <a class="nav-link active" aria-current="page" href="#">Active</a>
                 </li>-->
                 <li class="nav-item">
-                  <a class="nav-link" href="accueil.html">Accueil</a>
+                  <a class="nav-link" href="accueil.php">Accueil</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="recherche.html">Recherche</a>
+                  <a class="nav-link" href="recherche.php">Recherche</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="rendez_vous.html">Rendez-Vous</a>
+                  <a class="nav-link" href="rendez_vous.php">Rendez-Vous</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="inscription.html">Inscrire</a>
+                  <a class="nav-link" href="inscription.php">Inscrire</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="authentification.html">Connexion</a>
+                  <a class="nav-link" href="authentification.php">Connexion</a>
                 </li>
                 <!--<li class="nav-item">
                   <a class="nav-link disabled" aria-disabled="true">Disabled</a>
