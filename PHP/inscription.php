@@ -49,45 +49,67 @@
 
         <main>
 
+            <?php
+            include "../DB/database.php";
+            $conn = dbConnect();
+
+            if(!empty($_POST['Nom']) && !empty($_POST['Prenom']) && !empty($_POST['Telephone']) && !empty($_POST['Mail']) && !empty($_POST['Mdp'])){
+              if($_POST['Mail'] == $_POST['Mail_verif'] && $_POST['Mdp'] == $_POST['Mdp_verif']){
+                $request = $conn->prepare("INSERT INTO utilisateur (nom, prenom, telephone, adresse_email, mot_de_passe) VALUES (:nom, :prenom, :telephone, :adresse_email, :mot_de_passe)");
+                $request->bindParam(':nom', $_POST['Nom']);
+                $request->bindParam(':prenom', $_POST['Prenom']);
+                $request->bindParam(':telephone', $_POST['Telephone']);
+                $request->bindParam(':adresse_email', $_POST['Mail']);
+                $request->bindParam(':mot_de_passe', $_POST['Mdp']);
+                $request->execute();
+                $_POST['Nom'] = "";
+                $_POST['Prenom'] = "";
+                $_POST['Telephone'] = "";
+                $_POST['Mail'] = "";
+                $_POST['Mdp'] = "";
+              }
+            }
+            ?>
+
             <div id="form_insciption">
 
                 <h1>Inscription</h1>
 
-                <form>
+                <form action="inscription.php" method="post">
                     <div class="ligne_form">
                         <label for="formGroupExampleInput">Nom</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nom">
+                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nom" name="Nom" value=<?php echo $_POST['Nom'];?>>
                     </div>
                     <div class="ligne_form">
                         <label for="formGroupExampleInput2">Prenom</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Prénom">
+                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Prénom" name="Prenom" value=<?php echo $_POST['Prenom'];?>>
                     </div>
                     <div class="ligne_form">
                         <label for="formGroupExampleInput">Telephone</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Téléphone">
+                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Téléphone" name="Telephone" value=<?php echo $_POST['Telephone'];?>>
                     </div>
                     <div class="ligne_form">
                         <label for="formGroupExampleInput2">Adresse Mail</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Adresse Mail">
+                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Adresse Mail" name="Mail" value=<?php echo $_POST['Mail'];?>>
                     </div>
                     <div class="ligne_form">
                         <label for="formGroupExampleInput">Adresse Mail</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Adresse Mail ( Vérification )">
+                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Adresse Mail ( Vérification )" name="Mail_verif">
                     </div>
                     <div class="ligne_form">
                         <label for="formGroupExampleInput2">Mot de Passe</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Mot de Passe">
+                        <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="Mot de Passe" name="Mdp">
                     </div>
                     <div class="ligne_form">
                         <label for="formGroupExampleInput">Mot de Passe</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Mot de Passe ( Vérification )">
+                        <input type="password" class="form-control" id="formGroupExampleInput" placeholder="Mot de Passe ( Vérification )" name="Mdp_verif">
                     </div>
 
                     <button type="submit" class="btn btn-primary">Valider</button>
-
+                
                 </form>
 
-                <a href="authentification.html">J’ai déjà un compte !</a>
+                <a href="authentification.php">J’ai déjà un compte !</a>
             
             </div>
 

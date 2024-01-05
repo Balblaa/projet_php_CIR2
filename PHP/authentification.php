@@ -70,7 +70,7 @@
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
 
-                <a href="inscription.html">Pas de compte, inscrivez-vous !</a>
+                <a href="inscription.php">Pas de compte, inscrivez-vous !</a>
 
             </div>
 
