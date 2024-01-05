@@ -74,21 +74,19 @@
 
             </div>
 
-        </main>
-
-        <?php
+            <?php
         
-        $mail = $_POST['email'];
-        $mdp = $_POST['password'];
+            $mail = $_POST['email'];
+            $mdp = $_POST['password'];
 
-        $requete = $conn->prepare("SELECT Prenom FROM Utilisateur WHERE Adresse_Email = :email AND mot_de_passe = :motdp;");
-        $requete->bindParam(':email', $mail);
-        $requete->bindParam(':motdp', $mdp);
-        $requete->execute();
+            $requete = $conn->prepare("SELECT Prenom FROM Utilisateur WHERE Adresse_Email = :email AND mot_de_passe = :motdp;");
+            $requete->bindParam(':email', $mail);
+            $requete->bindParam(':motdp', $mdp);
+            $requete->execute();
 
-        echo "Bonjour : ".$requete ;
+            ?>
 
-        ?>
+        </main>
 
         <footer>
 
