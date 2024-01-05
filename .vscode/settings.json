@@ -5,7 +5,7 @@
             "server": "localhost",
             "port": 5432,
             "driver": "PostgreSQL",
-            "name": "Doctopus",
+            "name": "doctopus",
             "database": "doctopus",
             "username": "postgres"
         }
