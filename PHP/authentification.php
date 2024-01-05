@@ -75,21 +75,23 @@
             </div>
 
             <?php
+
               include "../DB/database.php";
               $conn = dbConnect();
               
               $mail = $_POST['email'];
               $mdp = $_POST['password'];
 
-              $requete = $conn->prepare("SELECT Prenom FROM Utilisateur WHERE Adresse_Email = :email AND mot_de_passe = :motdp;");
+              $requete = $conn->prepare('SELECT mot_de_passe FROM utilisateur WHERE adresse_email = :email');
               $requete->bindParam(':email', $mail);
-              $requete->bindParam(':motdp', $mdp);
               $requete->execute();
-
-              if ( $requete->execute() == 1 ){
-                echo "prout";
-              }else {
-                echo "pouet";
+              $mdp_email = $requete->fetchAll()[0][0];
+              
+              if ( $mdp_email == $mdp ){
+                // vous êtes connecté
+              }
+              else {
+                // Mauvais mot de passe ou utilisateur
               }
 
             ?>
