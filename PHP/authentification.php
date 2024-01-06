@@ -56,7 +56,7 @@
                 <form action="authentification.php" method="post">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" value=<?php echo $_POST['email'];?>>
                         <!--<div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>-->
                     </div>
                     <div class="mb-3">
@@ -87,13 +87,34 @@
               $requete->execute();
               $mdp_email = $requete->fetchAll()[0][0];
               
-              if ( $mdp_email == $mdp ){
-                // vous êtes connecté
-              }
-              else {
-                // Mauvais mot de passe ou utilisateur
+              if ( $mdp_email == $mdp && $est_connecté != $mail){ //si bon mail et mdp alors connecté
+
+                $est_connecté = $mail ;
+
+                //echo "Bonjour";
+
+                echo '<script language="Javascript">
+                alert("Vous êtes connecté.e !")
+                </script>';
+
               }
 
+              else { //n'est pas connecté car mauvais mdp ou mauvaise adresse mail
+
+                if ( $mail != "" || $mdp != "" ){
+
+                  $est_connecté = "" ;
+
+                  //echo "Bonne nuit";
+
+                  echo '<script language="Javascript">
+                  alert("Vous nêtes pas connecté.e !")
+                  </script>';
+
+                }
+
+              }
+              
             ?>
 
         </main>
