@@ -61,7 +61,7 @@
                   $verification->execute();
                   $tel_email = $verification->fetchAll()[0][0]; 
 
-                  if ( $_POST['Telephone'] != $tel_email ){
+                  if ( $_POST['Telephone'] != $tel_email || $_POST['Telephone'] == $tel_email){
                     //dire que l'adresse mail est déjà utiliser
                     echo '<script language="Javascript">
                     alert("Cet adresse mail est déjà utiliser par un autre compte")
