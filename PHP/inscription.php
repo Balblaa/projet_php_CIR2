@@ -69,6 +69,9 @@
                   }
                   if ( $tel_email == null ){
                     //laisser le gens créer son compte
+                    echo '<script language="Javascript">
+                    alert("Vous êtes bien incris ! Bienvenue sur Doctopus ! :D")
+                    </script>';
                   }
 
                   $request = $conn->prepare("INSERT INTO utilisateur (nom, prenom, telephone, adresse_email, mot_de_passe) VALUES (:nom, :prenom, :telephone, :adresse_email, :mot_de_passe)");
