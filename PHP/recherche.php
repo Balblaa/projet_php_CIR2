@@ -49,40 +49,33 @@
 
         <main>
 
-            <div>
+            <form id="recherche" method="post">
 
-                <nav class="navbar bg-body-tertiary">
-                    <div class="container-fluid">
-                        <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form>
-                    </div>
-                </nav>
+                <div class="container-fluid">
+                    <label>spécialitée :</label>
+                    <select class="custom-select custom-select-sm">
+                        <option value="1">allergologie </option>
+                        <option value="2">anesthésiologie</option>
+                        <option value="3">andrologie</option>
+                        <option value="4">cardiologie</option>
+                        <option value="5">chirurgie</option>
+                        <option value="6">psychiatrie</option>
+                        <option value="7">radiologie</option>
+                        <option value="8">rhumatologie</option>
+                        <option value="9">neurologie</option>
+                        <option value="10">gynécologie</option>
+                    </select>
+                </div>
 
-                <select class="custom-select custom-select-sm">
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
+                <div class="container-fluid">
+                    <label>Lieu du rendez vous :</label>
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </div>
 
-                <select class="custom-select custom-select-sm">
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
+            </form>
 
-                <select class="custom-select custom-select-sm">
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
-
-            </div>
-
+            <br><br>
             <div>
 
                 <div class="card" style="width: 18rem;">
