@@ -53,42 +53,60 @@
 
                 <div class="container-fluid">
                     <label>spécialitée :</label>
-                    <select class="custom-select custom-select-sm">
-                        <option value="1">allergologie </option>
-                        <option value="2">anesthésiologie</option>
-                        <option value="3">andrologie</option>
-                        <option value="4">cardiologie</option>
-                        <option value="5">chirurgie</option>
-                        <option value="6">psychiatrie</option>
-                        <option value="7">radiologie</option>
-                        <option value="8">rhumatologie</option>
-                        <option value="9">neurologie</option>
-                        <option value="10">gynécologie</option>
+                    <select class="custom-select custom-select-sm" name="specialite">
+                        <option value="allergologie">allergologie </option>
+                        <option value="anesthésiologie">anesthésiologie</option>
+                        <option value="andrologie">andrologie</option>
+                        <option value="cardiologie">cardiologie</option>
+                        <option value="chirurgie">chirurgie</option>
+                        <option value="psychiatrie">psychiatrie</option>
+                        <option value="radiologie">radiologie</option>
+                        <option value="rhumatologie">rhumatologie</option>
+                        <option value="neurologie">neurologie</option>
+                        <option value="gynécologie">gynécologie</option>
                     </select>
                 </div>
 
                 <div class="container-fluid">
                     <label>Lieu du rendez vous :</label>
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="lieu">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </div>
 
             </form>
 
             <br><br>
-            <div>
+            <?php
+                //php pour trouvé afficher les reservation disponible a partir des demande du client
 
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
+                include "../DB/database.php";
+                $conn = dbConnect();
 
-            </div>
-            
+                $requete = $conn->prepare('SELECT m.nom, m.prenom, m.specialite, rdv.date, rdv.heure, rdv.id_rendez_vous FROM medecin m JOIN rendez_vous rdv ON m.id_medecin = rdv.id_medecin WHERE m.specialite=:specialite AND m.localisation=:lieu AND rdv.disponible = \'1\'');
+                $requete->bindParam(':specialite', $_POST['specialite']);
+                $requete->bindParam(':lieu', $_POST['lieu']);
+                $requete->execute();
+                $info = $requete->fetchAll();
+                echo "<div>";
+                foreach ($info as $ligne) {
+                  echo "<div class=\"card\" style=\"width: 18rem;\">";
+                  echo "  <div class=\"card-body\">";
+                  echo "    <h5 class=\"card-title\">Rendez vous avec Dr.".$ligne[0]."</h5>";
+                  echo "    <p class=\"card-text\">Dr.".$ligne[0]." ".$ligne[1]."<br>Le ".$ligne[3]." à ".$ligne[4]."<br>specialiste en ".$ligne[2]."</p>";
+                  echo "    <form method=\"post\"><input type=\"hidden\" value=".$ligne[5]." name=\"reservation\"><button class=\"btn btn-primary\" type=\"submit\">prendre ce rendez-vous</a></form>";
+                  echo "  </div>";
+                  echo "</div>";
+                }
+                echo "</div>";
+
+
+                //php pour attribuer une réservation à un utilisateur
+
+                $id = $_POST['reservation'];
+                $requete = $conn->query('ALTER')
+                
+            ?>
+                
 
         </main>
 
