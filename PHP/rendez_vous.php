@@ -85,6 +85,22 @@
 
                 </div>
 
+                <?php
+
+                  include "../DB/database.php";
+                  $conn = dbConnect();
+
+                  if ( $est_connecté != "" ){
+
+                    $requete = $conn->prepare('SELECT * FROM rendez_vous WHERE adresse_email = :email');
+                    $requete->bindParam(':email', $mail);
+                    $requete->execute();
+                    $mdp_email = $requete->fetchAll()[0][0];
+
+                  }
+
+                ?>
+
             </div>
 
         </main>
