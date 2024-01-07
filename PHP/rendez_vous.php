@@ -97,7 +97,16 @@
                     $requete->execute();
                     $rdv_tous = $requete->fetchAll();
 
-                    
+                    echo "<div>";
+                    foreach ($rdv_tous as $ligne) {
+                      echo "<div class=\"card\" style=\"width: 18rem;\">";
+                      echo "  <div class=\"card-body\">";
+                      echo "    <h5 class=\"card-title\">Dr.".$ligne[3].", ".$ligne[4]." à ".$ligne[5]."</h5>";
+                      echo "    <p class=\"card-text\">Rendez vous le : ".$ligne[1]." à ".$ligne[2]."</p>";
+                      echo "  </div>";
+                      echo "</div>";
+                    }
+                    echo "</div>";
 
                   }
 
