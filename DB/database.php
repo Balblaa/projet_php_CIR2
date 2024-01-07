@@ -17,6 +17,4 @@ function dbConnect(){
     return $conn;
 };
 
-const est_connecté = "" ;
-
 ?>

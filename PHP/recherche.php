@@ -81,6 +81,7 @@
 
                 include "../DB/database.php";
                 $conn = dbConnect();
+                session_start();
 
                 $requete = $conn->prepare('SELECT m.nom, m.prenom, m.specialite, rdv.date, rdv.heure, rdv.id_rendez_vous FROM medecin m JOIN rendez_vous rdv ON m.id_medecin = rdv.id_medecin WHERE m.specialite=:specialite AND m.localisation=:lieu AND rdv.disponible = \'1\'');
                 $requete->bindParam(':specialite', $_POST['specialite']);
@@ -103,8 +104,16 @@
                 //php pour attribuer une réservation à un utilisateur
 
                 $id = $_POST['reservation'];
-                $requete = $conn->query('ALTER')
                 
+                // le rendez_vous n'est plus disponible
+                $requete = $conn->prepare('UPDATE rendez_vous SET disponible = \'0\' WHERE id_rendez_vous = :id');
+                $requete->bindParam(':id', $id);
+                $requete->execute();
+
+                // on lie dans les reserves le rendez_vous et l'utilisateur
+                $requete = $conn->prepare('INSERT INTO reserver (id_rendez_vous, adresse_email) VALUES (:id_rdv, :adresse');
+                $requete = $conn->bindParam(':id', $id);
+                $requete = $conn->bindParam(':adresse', )
             ?>
                 
 
