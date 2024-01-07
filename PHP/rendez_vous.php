@@ -86,16 +86,18 @@
                 </div>
 
                 <?php
-
+                  session_start();
                   include "../DB/database.php";
                   $conn = dbConnect();
 
-                  if ( $est_connecté != "" ){
+                  if ( $_SESSION['mail'] != "" ){
 
-                    $requete = $conn->prepare('SELECT * FROM rendez_vous WHERE adresse_email = :email');
-                    $requete->bindParam(':email', $mail);
+                    $requete = $conn->prepare('SELECT r.adresse_email, rv.date, rv.heure, m.nom, m.specialite, m.localisation FROM medecin m, reserver r, rendez_vous rv WHERE r.id_rendez_vous = rv.id_rendez_vous AND m.id_medecin = rv.id_medecin AND r.adresse_email = :email ORDER BY rv.date, rv.heure, m.nom ;');
+                    $requete->bindParam(':email', $_SESSION['mail']);
                     $requete->execute();
-                    $mdp_email = $requete->fetchAll()[0][0];
+                    $rdv_tous = $requete->fetchAll();
+
+                    
 
                   }
 
