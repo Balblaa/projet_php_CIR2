@@ -104,19 +104,32 @@
                 //php pour attribuer une réservation à un utilisateur
 
                 $id = $_POST['reservation'];
-                
-                // le rendez_vous n'est plus disponible
-                $requete = $conn->prepare('UPDATE rendez_vous SET disponible = \'0\' WHERE id_rendez_vous = :id');
-                $requete->bindParam(':id', $id);
-                $requete->execute();
+                if($id != "" && $_SESSION['mail'] != ""){
+                  // le rendez_vous n'est plus disponible
+                  $requete = $conn->prepare('UPDATE rendez_vous SET disponible = \'0\' WHERE id_rendez_vous = :id');
+                  $requete->bindParam(':id', $id);
+                  $requete->execute();
 
-                // on lie dans les reserves le rendez_vous et l'utilisateur
-                $requete = $conn->prepare('INSERT INTO reserver (id_rendez_vous, adresse_email) VALUES (:id_rdv, :adresse');
-                $requete = $conn->bindParam(':id', $id);
-                $requete = $conn->bindParam(':adresse', )
+                  // on lie dans les reserves le rendez_vous et l'utilisateur
+                  $requete = $conn->prepare('INSERT INTO reserver (id_rendez_vous, adresse_email) VALUES (:id_rdv, :adresse)');
+                  $requete->bindParam(':id_rdv', $id);
+                  $requete->bindParam(':adresse', $_SESSION['mail']);
+                  $requete->execute();
+
+                  echo '<script language="Javascript">
+                  alert("Vous avez réserver un rendez_vous")
+                  </script>';
+
+                } else {
+                  if ($id != "" && $_SESSION['mail'] == ""){
+                    echo '<script language="Javascript">
+                    alert("Connecter vous avant de réserver")
+                    </script>'; 
+                  }
+                }
             ?>
+            <br>
                 
-
         </main>
 
         <footer>

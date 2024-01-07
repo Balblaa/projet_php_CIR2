@@ -78,6 +78,7 @@
 
               include "../DB/database.php";
               $conn = dbConnect();
+              session_start();
               
               $mail = $_POST['email'];
               $mdp = $_POST['password'];
@@ -87,9 +88,9 @@
               $requete->execute();
               $mdp_email = $requete->fetchAll()[0][0];
               
-              if ( $mdp_email == $mdp && $est_connecté != $mail){ //si bon mail et mdp alors connecté
+              if ( $mdp_email == $mdp && $_SESSION['mail'] != $mail){ //si bon mail et mdp alors connecté
 
-                $est_connecté = $mail ;
+                $_SESSION['mail'] = $mail ;
 
                 //echo "Bonjour";
 
@@ -103,7 +104,7 @@
 
                 if ( $mail != "" || $mdp != "" ){
 
-                  $est_connecté = "" ;
+                  $_SESSION['mail'] = "" ;
 
                   //echo "Bonne nuit";
 
