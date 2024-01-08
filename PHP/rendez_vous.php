@@ -49,70 +49,38 @@
 
         <main>
 
-            <div id="bloc1">
+            <?php
+              session_start();
+              include "../DB/database.php";
+              $conn = dbConnect();
 
-                <div id="bloc21">
+              if ( $_SESSION['mail'] != ""){
 
-                    <div class="bloc3">
-                        <h1>A Venir</h1>
-                    </div>
+                $requete = $conn->prepare('SELECT r.adresse_email, rv.date, rv.heure, m.nom, m.specialite, m.localisation FROM medecin m, reserver r, rendez_vous rv WHERE r.id_rendez_vous = rv.id_rendez_vous AND m.id_medecin = rv.id_medecin AND r.adresse_email = :email ORDER BY rv.date, rv.heure, m.nom ;');
+                $requete->bindParam(':email', $_SESSION['mail']);
+                $requete->execute();
+                $rdv_tous = $requete->fetchAll();
 
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-
-                </div>
-                
-                <div id="bloc22">
-
-                    <div id="bloc3">
-                        <h1>Passé</h1>
-                    </div>
-
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-
-                </div>
-
-                <?php
-                  session_start();
-                  include "../DB/database.php";
-                  $conn = dbConnect();
-
-                  if ( $_SESSION['mail'] != "" ){
-
-                    $requete = $conn->prepare('SELECT r.adresse_email, rv.date, rv.heure, m.nom, m.specialite, m.localisation FROM medecin m, reserver r, rendez_vous rv WHERE r.id_rendez_vous = rv.id_rendez_vous AND m.id_medecin = rv.id_medecin AND r.adresse_email = :email ORDER BY rv.date, rv.heure, m.nom ;');
-                    $requete->bindParam(':email', $_SESSION['mail']);
-                    $requete->execute();
-                    $rdv_tous = $requete->fetchAll();
-
-                    echo "<div>";
-                    foreach ($rdv_tous as $ligne) {
-                      echo "<div class=\"card\" style=\"width: 18rem;\">";
-                      echo "  <div class=\"card-body\">";
-                      echo "    <h5 class=\"card-title\">Dr.".$ligne[3].", ".$ligne[4]." à ".$ligne[5]."</h5>";
-                      echo "    <p class=\"card-text\">Rendez vous le : ".$ligne[1]." à ".$ligne[2]."</p>";
-                      echo "  </div>";
-                      echo "</div>";
-                    }
+                if($rdv_tous[0] != null){
+                  echo "<div>";
+                  foreach ($rdv_tous as $ligne) {
+                    echo "<div class=\"card\" style=\"width: 18rem;\">";
+                    echo "  <div class=\"card-body\">";
+                    echo "    <h5 class=\"card-title\">Dr.".$ligne[3].", ".$ligne[4]." à ".$ligne[5]."</h5>";
+                    echo "    <p class=\"card-text\">Rendez vous le : ".$ligne[1]." à ".$ligne[2]."</p>";
+                    echo "  </div>";
                     echo "</div>";
-
                   }
+                  echo "</div>";
+                } else {
+                  echo "<h2> Vous n'avez aucun rendez-vous</h2>";
+                }
 
-                ?>
+              } else {
+                echo "<h2> Vous n'êtes pas connecté</h2>";
+              }
 
-            </div>
+            ?>
 
         </main>
 
