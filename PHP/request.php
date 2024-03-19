@@ -3,3 +3,5 @@
 
     $conn = dbConnect();
     $type_request = $_SERVER['REQUEST_METHOD'];
+
+?>
