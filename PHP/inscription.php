@@ -87,7 +87,7 @@
               
               </form>
 
-              <a href="authentification.html">J’ai déjà un compte !</a>
+              <a href="../PHP/authentification.php">J’ai déjà un compte !</a>
           
           </div>
 

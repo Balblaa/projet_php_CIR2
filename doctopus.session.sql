@@ -1,1 +1,1 @@
-SELECT * FROM genre, medecin, rendez_vous, reserver, utilisateur
+SELECT * FROM utilisateur
