@@ -1,14 +1,19 @@
+console.log("Poulpe");
+
 //Pour lancer le tout
 getSpeDoc();
-getLieuDoc();
-getGenreDoc();
 
 //Fonction pour ajouter les spécialités des docteurs
 function displaySpeDoc(reponse){
 
+    console.log("Poulpe");
+
     let n = reponse.length;
     let poulpe ;
     let texte = '' ;
+
+    console.log(n);
+    console.log(reponse);
 
     let add = document.getElementsByName("specialite");
 
@@ -16,7 +21,7 @@ function displaySpeDoc(reponse){
 
         poulpe = reponse[i];
         console.log(poulpe["specialite"]);
-        texte = texte + '<option value=' + poulpe["id_medecin"] + '>' + poulpe["specialite"] + '</option>\n';
+        texte = texte + '<option value=' + poulpe["specialite"] + '>' + poulpe["specialite"] + '</option>\n';
 
     }
 
@@ -80,7 +85,7 @@ function displayGenreDoc(reponse){
 
 function getSpeDoc() {
 
-    ajaxRequest("GET", "../PHP/request.php?request=specialite" , displaySpeDoc);
+    ajaxRequest("GET", "../PHP/request.php?request=specialite", displaySpeDoc);
 
 }
 
