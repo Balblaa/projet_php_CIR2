@@ -22,8 +22,7 @@ function dbRequestLieu($conn){
   $requete->execute();
   $info = $requete->fetchAll();
 }
-
-  echo "<div>";
+/*
   foreach ($info as $ligne) {
     echo "<div class=\"card\" style=\"width: 18rem;\">";
     echo "  <div class=\"card-body\">";
@@ -59,5 +58,5 @@ function dbRequestLieu($conn){
       alert("Connecter vous avant de réserver")
       </script>'; 
     }
-  }
+  }*/
 ?>
