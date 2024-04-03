@@ -95,7 +95,7 @@
 
                 <h1>Authentification</h1>
 
-                <form action="authentification.html" method="post">
+                <form action="authentification.php" method="post">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
                         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" >
@@ -112,7 +112,7 @@
                     <button type="submit" class="btn btn-primary" id="boumit">Submit</button> <!--boumit le bouton qui submit-->
                 </form>
 
-                <a href="../PHP/inscription.php">Pas de compte, inscrivez-vous !</a>
+                <a href="inscription.php">Pas de compte, inscrivez-vous !</a>
 
             </div>
             
@@ -152,8 +152,6 @@
 
     $_SESSION['mail'] = $mail ;
 
-    //echo "Bonjour";
-
     echo '<script language="Javascript">
     alert("Vous êtes connecté.e !")
     </script>';
@@ -167,7 +165,7 @@
       $_SESSION['mail'] = "" ;
 
       echo '<script language="Javascript">
-      alert("Vous nêtes pas connecté.e !")
+      alert("Vous nêtes pas connecté.e !")  
       </script>';
 
     }

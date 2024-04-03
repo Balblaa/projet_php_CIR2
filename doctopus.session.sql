@@ -1,1 +1,1 @@
-SELECT * FROM utilisateur
+SELECT DISTINCT localisation FROM medecin ORDER BY localisation ASC;
