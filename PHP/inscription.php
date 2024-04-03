@@ -104,12 +104,12 @@
                 $tel_email = $verification->fetchAll()[0][0]; 
 
                 if ($tel_email != null){
-                  //dire que l'adresse mail est déjà utiliser
+                  // dire que l'adresse mail est déjà utiliser
                   echo '<script language="Javascript">
                   alert("Cet adresse mail est déjà utiliser par un autre compte")
                   </script>';
                 } else {
-                  //laisser le gens créer son compte
+                  // laisser le gens créer son compte
                   echo '<script language="Javascript">
                   alert("Vous êtes bien incris ! Bienvenue sur Doctopus ! :D")
                   </script>';
