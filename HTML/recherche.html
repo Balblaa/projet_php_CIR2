@@ -51,7 +51,7 @@
 
         <main>
 
-            <form id="recherche" method="post">
+            <form id="recherche" method="get">
 
                 <div class="container-fluid">
                     <label>spécialitée :</label>
@@ -68,15 +68,15 @@
               <div class="container-fluid">
                 <label>Genre :</label>
                 <select class="custom-select custom-select-sm" name="genre">
-                  <option value="Homme">Homme</option>
-                  <option value="Femme">Femme</option>
+                  <option value="1">Homme</option>
+                  <option value="0">Femme</option>
                 </select>
             </div>
 
                 <div class="container-fluid">
                     <label>Nom du médecin</label>
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="lieu">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="nom">
+                    <button class="btn btn-outline-success" type="submit" id="bouton_recherche">Search</button>
                 </div>
 
             </form>

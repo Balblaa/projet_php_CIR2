@@ -23,6 +23,20 @@ function dbRequestLieu($conn){
   $info = $requete->fetchAll();
   return $info;
 }
+
+function dbRequestRdv($conn, $nom, $spe, $lieu, $genre){
+  echo $nom . ' ' . $spe . ' ' . $lieu . ' ' . $genre;
+  $requete = $conn->prepare('SELECT m.nom, m.prenom, m.specialite, m.localisation FROM genre g JOIN (medecin m JOIN rendez_vous r ON m.id_medecin = r.id_medecin) ON g.id_genre = m.id_genre 
+  WHERE m.nom LIKE :nom AND m.specialite = :specialite AND m.localisation = :localisation AND g.id_genre = :genre AND r.disponible');
+  $nom = $nom . '%';
+  $requete->bindParam(':nom', $nom);
+  $requete->bindParam(':specialite', $spe);
+  $requete->bindParam(':localisation', $lieu);
+  $requete->bindParam(':genre', $genre);
+  $requete->execute();
+  $info = $requete->fetchAll(); 
+  return $info;
+}
 /*
   foreach ($info as $ligne) {
     echo "<div class=\"card\" style=\"width: 18rem;\">";

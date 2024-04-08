@@ -22,7 +22,7 @@
         echo json_encode($lieu);
     }
     if($type_request == 'GET' and $requestRessource == "rdv"){
-        $rendezvous = $dbRequestRdv;
+        $rendezvous = dbRequestRdv($conn, $_GET['nom'], $_GET['specialite'], $_GET['lieu'], $_GET['genre']);
         echo json_encode($rendezvous);
     }
 ?>
