@@ -43,7 +43,7 @@ function displayLieuDoc(reponse){
 }
 
 function displayRdv() {
-    
+
 }
 
 function getSpeDoc() {
@@ -60,6 +60,6 @@ function getLieuDoc() {
 
 function getRdv() {
 
-
+    ajaxRequest("GET", "../PHP/request.php/rdv", displayRdv);
 
 }
