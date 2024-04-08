@@ -17,5 +17,8 @@
         $specialites = dbRequestspe($conn);
         echo json_encode($specialites);
     }
-    if($type_request == 'GET' and $requestRessource == "")
+    if($type_request == 'GET' and $requestRessource == "lieu"){
+        $lieu = dbRequestLieu($conn);
+        echo json_encode($lieu);
+    }
 ?>

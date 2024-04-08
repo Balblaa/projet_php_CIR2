@@ -1,5 +1,6 @@
 //Pour lancer le tout
 getSpeDoc();
+getLieuDoc();
 
 //Fonction pour ajouter les spécialités des docteurs
 function displaySpeDoc(reponse){
@@ -17,8 +18,6 @@ function displaySpeDoc(reponse){
 
     }
 
-    console.log(texte);
-
     add.innerHTML = texte ;
 
 }
@@ -27,51 +26,18 @@ function displaySpeDoc(reponse){
 function displayLieuDoc(reponse){
 
     let n = reponse.length;
-    let poulpe ;
+    let poulpe;
     let texte = '' ;
 
-    let add = document.getElementsByName("lieu");
+    let add = document.getElementsByName("lieu")[0];
 
     for ( let i = 0; i < n; i ++ ){
 
         poulpe = reponse[i];
-        console.log(poulpe["lieu"]);
-        texte = texte + '<option value=' + poulpe["id_medecin"] + '>' + poulpe["lieu"] + '</option>\n';
+        texte = texte + '<option value=' + poulpe["id_medecin"] + '>' + poulpe["localisation"] + '</option>\n';
 
     }
 
-    console.log(texte);
-    add.innerHTML = texte ;
-
-}
-
-//Fonction pour ajouter le genre des docteurs
-function displayGenreDoc(reponse){
-
-    let n = reponse.length;
-    let poulpe ;
-    let texte = '' ;
-    let txt = '' ;
-
-    let add = document.getElementsByName("genre");
-
-    for ( let i = 0; i < n; i ++ ){
-
-        poulpe = reponse[i];
-        console.log(poulpe["genre"]);
-
-        if ( poulpe["genre"] == 0){
-            txt = "Homme";
-        }
-        else {
-            txt = "Femme";
-        }
-
-        texte = texte + '<option value=' + poulpe["id_medecin"] + '>' + txt + '</option>\n';
-
-    }
-
-    console.log(texte);
     add.innerHTML = texte ;
 
 }
@@ -84,12 +50,6 @@ function getSpeDoc() {
 
 function getLieuDoc() {
 
-    ajaxRequest("GET", "../PHP/request.php?request=lieu", displayLieuDoc);
-
-}
-
-function getGenreDoc() {
-
-    ajaxRequest("GET", "../PHP/request.php?request=genre", displayGenreDoc);
+    ajaxRequest("GET", "../PHP/request.php/lieu", displayLieuDoc);
 
 }

@@ -21,6 +21,7 @@ function dbRequestLieu($conn){
   $requete = $conn->prepare('SELECT DISTINCT localisation FROM medecin ORDER BY localisation ASC');
   $requete->execute();
   $info = $requete->fetchAll();
+  return $info;
 }
 /*
   foreach ($info as $ligne) {
