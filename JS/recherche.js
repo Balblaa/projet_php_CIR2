@@ -42,6 +42,10 @@ function displayLieuDoc(reponse){
 
 }
 
+function displayRdv() {
+    
+}
+
 function getSpeDoc() {
 
     ajaxRequest("GET", "../PHP/request.php/specialite", displaySpeDoc);
@@ -51,5 +55,11 @@ function getSpeDoc() {
 function getLieuDoc() {
 
     ajaxRequest("GET", "../PHP/request.php/lieu", displayLieuDoc);
+
+}
+
+function getRdv() {
+
+
 
 }

@@ -21,4 +21,8 @@
         $lieu = dbRequestLieu($conn);
         echo json_encode($lieu);
     }
+    if($type_request == 'GET' and $requestRessource == "rdv"){
+        $rendezvous = $dbRequestRdv;
+        echo json_encode($rendezvous);
+    }
 ?>
