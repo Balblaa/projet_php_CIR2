@@ -61,11 +61,7 @@ function displayRdv(reponse) {
 
     for ( let i = 0; i < n; i ++ ){
 
-        poulpe = reponse[i];/*
-        texte = texte + '<div class="card" id="card_prendre_rdv"\n';
-        texte = texte + '    <p>' + poulpe["0"] + poulpe["1"] + '<br><br>' + poulpe["2"] + '<br>' + poulpe["3"] + '<br><br>' + poulpe["4"] + '<br>' + poulpe["5"] + '</p>';
-        texte = texte + '    <button type="button" id="boutbouton">Prendre rendez-vous</button>';
-        texte = texte + '</div>';*/
+        poulpe = reponse[i];
 
         texte += "<div class=\"card\" style=\"width: 18rem;\">";
         texte += "  <div class=\"card-body\">";
