@@ -1,1 +1,1 @@
-SELECT m.nom, m.prenom, m.specialite, m.localisation FROM genre g JOIN (medecin m JOIN rendez_vous r ON m.id_medecin = r.id_medecin) ON g.id_genre = m.id_genre WHERE m.nom = 'eude' AND m.specialite = 'chirurgie' AND m.localisation = 'Nantes' AND g.id_genre = 0 AND r.disponible;
+SELECT * FROM rendez_vous rdv JOIN medecin m ON rdv.id_medecin = m.id_medecin

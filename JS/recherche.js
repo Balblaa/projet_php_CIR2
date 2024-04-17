@@ -38,7 +38,7 @@ function displayLieuDoc(reponse){
     for ( let i = 0; i < n; i ++ ){
 
         poulpe = reponse[i];
-        texte = texte + '<option value=' + poulpe["id_medecin"] + '>' + poulpe["localisation"] + '</option>\n';
+        texte = texte + '<option value=' + poulpe["localisation"] + '>' + poulpe["localisation"] + '</option>\n';
 
     }
 
@@ -48,7 +48,7 @@ function displayLieuDoc(reponse){
 
 function displayRdv(reponse) {
 
-    console.log("Prout");
+    console.log(reponse);
 
     let n = reponse.length;
     let poulpe;

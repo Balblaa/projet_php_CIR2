@@ -25,8 +25,7 @@ function dbRequestLieu($conn){
 }
 
 function dbRequestRdv($conn, $nom, $spe, $lieu, $genre){
-  echo $nom . ' ' . $spe . ' ' . $lieu . ' ' . $genre;
-  $requete = $conn->prepare('SELECT m.nom, m.prenom, m.specialite, m.localisation FROM genre g JOIN (medecin m JOIN rendez_vous r ON m.id_medecin = r.id_medecin) ON g.id_genre = m.id_genre 
+  $requete = $conn->prepare('SELECT m.nom, m.prenom, m.specialite, m.localisation, r.date, r.heure FROM genre g JOIN (medecin m JOIN rendez_vous r ON m.id_medecin = r.id_medecin) ON g.id_genre = m.id_genre 
   WHERE m.nom LIKE :nom AND m.specialite = :specialite AND m.localisation = :localisation AND g.id_genre = :genre AND r.disponible');
   $nom = $nom . '%';
   $requete->bindParam(':nom', $nom);
