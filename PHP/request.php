@@ -9,10 +9,6 @@
     $request = explode('/', $request);
     $requestRessource = array_shift($request);
 
-    if($type_request == 'GET'and $requestRessource == "medecin"){
-        $medecin = dbRequestMedic($conn, $_GET['specialite'], $_GET['lieu']);
-        echo json_encode($medecin);
-    }
     if($type_request == 'GET' and $requestRessource == "specialite"){
         $specialites = dbRequestspe($conn);
         echo json_encode($specialites);
@@ -26,8 +22,8 @@
         echo json_encode($rendezvous);
     }
 
-    if($type_request == 'POST' and $requestRessource == "prendre_rdv"){
+    /*if($type_request == 'POST' and $requestRessource == "prendre_rdv"){
         $reussite = ajoutrdv($conn, $_POST['id_rendez']);
         echo $reussite;
-    }
+    }*/
 ?>

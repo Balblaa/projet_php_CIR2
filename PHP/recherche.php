@@ -33,7 +33,7 @@ function dbRequestRdv($conn, $nom, $spe, $lieu, $genre){
   $requete->bindParam(':localisation', $lieu);
   $requete->bindParam(':genre', $genre);
   $requete->execute();
-  $info = $requete->fetchAll(); 
+  $info = $requete->fetchAll();
   return $info;
 }
 /*

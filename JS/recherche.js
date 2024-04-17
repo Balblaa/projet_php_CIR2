@@ -4,7 +4,10 @@ getLieuDoc();
 
 // AddEvent
 let b = document.getElementById('bouton_recherche');
-b.addEventListener('click', getRdv())
+b.addEventListener('click', function(event){
+    event.preventDefault();
+    getRdv()
+})
 
 //Fonction pour ajouter les spécialités des docteurs
 function displaySpeDoc(reponse){
@@ -54,17 +57,23 @@ function displayRdv(reponse) {
     let poulpe;
     let texte = '' ;
 
-    let add = document.getElementById("carte")[0];
+    let bobby = document.getElementById("carte");
 
     for ( let i = 0; i < n; i ++ ){
 
-        let bobby = add.appendChild();
-
-        poulpe = reponse[i];
-        texte = texte + '<div id="card_prendre_rdv"\n';
+        poulpe = reponse[i];/*
+        texte = texte + '<div class="card" id="card_prendre_rdv"\n';
         texte = texte + '    <p>' + poulpe["0"] + poulpe["1"] + '<br><br>' + poulpe["2"] + '<br>' + poulpe["3"] + '<br><br>' + poulpe["4"] + '<br>' + poulpe["5"] + '</p>';
         texte = texte + '    <button type="button" id="boutbouton">Prendre rendez-vous</button>';
-        texte = texte + '</div>';
+        texte = texte + '</div>';*/
+
+        texte += "<div class=\"card\" style=\"width: 18rem;\">";
+        texte += "  <div class=\"card-body\">";
+        texte += "    <h5 class=\"card-title\">Rendez vous avec Dr." + poulpe["0"] + " " + poulpe["1"] + "</h5>";
+        texte += "    <p class=\"card-text\">À " + poulpe["3"] + "<br>Le " + poulpe["4"] + " à " + poulpe["5"] + "<br>specialiste en " + poulpe["2"] + "</p>";
+        texte += "    <form method=\"post\"><input type=\"hidden\" value=" + poulpe["5"] + " name=\"reservation\"><button class=\"btn btn-primary\" type=\"submit\">prendre ce rendez-vous</a></form>";
+        texte += "  </div>";
+        texte += "</div>";
 
         bobby.innerHTML = texte ;
 
@@ -85,7 +94,11 @@ function getLieuDoc() {
 }
 
 function getRdv() {
-
-    ajaxRequest("GET", "../PHP/request.php/rdv", displayRdv);
+    specialite = document.getElementsByName("specialite")[0];
+    lieu = document.getElementsByName("lieu")[0];
+    genre = document.getElementsByName("genre")[0];
+    nom = document.getElementsByName("nom")[0];
+    let requete = "?specialite=" + specialite.value + "&lieu=" + lieu.value + "&genre=" + genre.value + "&nom=" + nom.value;
+    ajaxRequest("GET", "../PHP/request.php/rdv" + requete, displayRdv);
 
 }
