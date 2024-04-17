@@ -25,4 +25,9 @@
         $rendezvous = dbRequestRdv($conn, $_GET['nom'], $_GET['specialite'], $_GET['lieu'], $_GET['genre']);
         echo json_encode($rendezvous);
     }
+
+    if($type_request == 'POST' and $requestRessource == "prendre_rdv"){
+        $reussite = ajoutrdv($conn, $_POST['id_rendez'])
+        echo $reussite
+    }
 ?>
