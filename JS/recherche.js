@@ -1,6 +1,10 @@
-//Pour lancer le tout
+// Récupération des lieu et spécialité disponible
 getSpeDoc();
 getLieuDoc();
+
+// AddEvent
+let b = document.getElementById('bouton_recherche');
+b.addEventListener('click', getRdv())
 
 //Fonction pour ajouter les spécialités des docteurs
 function displaySpeDoc(reponse){
