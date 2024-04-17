@@ -27,7 +27,7 @@
     }
 
     if($type_request == 'POST' and $requestRessource == "prendre_rdv"){
-        $reussite = ajoutrdv($conn, $_POST['id_rendez'])
+        $reussite = ajoutrdv($conn, $_POST['id_rendez']);
         echo $reussite;
     }
 ?>
