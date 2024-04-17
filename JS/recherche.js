@@ -42,7 +42,30 @@ function displayLieuDoc(reponse){
 
 }
 
-function displayRdv() {
+function displayRdv(reponse) {
+
+    console.log("Prout");
+
+    let n = reponse.length;
+    let poulpe;
+    let texte = '' ;
+
+    let add = document.getElementById("carte")[0];
+
+    for ( let i = 0; i < n; i ++ ){
+
+        let bobby = add.appendChild();
+
+        poulpe = reponse[i];
+        texte = texte + '<div id="card_prendre_rdv"\n';
+        texte = texte + '    <p>' + poulpe["0"] + '<br>' + poulpe["1"] + '<br><br>' + poulpe[""] + '<br>' + poulpe[""] + '<br><br>' + poulpe[""] + '</p>';
+        texte = texte + '    <button type="button" id="boutbouton">Prendre rendez-vous</button>';
+        texte = texte + '</div>';
+
+
+        bobby.innerHTML = texte ;
+
+    }
 
 }
 
