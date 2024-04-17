@@ -62,10 +62,9 @@ function displayRdv(reponse) {
 
         poulpe = reponse[i];
         texte = texte + '<div id="card_prendre_rdv"\n';
-        texte = texte + '    <p>' + poulpe["0"] + '<br>' + poulpe["1"] + '<br><br>' + poulpe[""] + '<br>' + poulpe[""] + '<br><br>' + poulpe[""] + '</p>';
+        texte = texte + '    <p>' + poulpe["0"] + poulpe["1"] + '<br><br>' + poulpe["2"] + '<br>' + poulpe["3"] + '<br><br>' + poulpe["4"] + '</p>';
         texte = texte + '    <button type="button" id="boutbouton">Prendre rendez-vous</button>';
         texte = texte + '</div>';
-
 
         bobby.innerHTML = texte ;
 
