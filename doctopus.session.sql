@@ -1,1 +1,2 @@
-SELECT * FROM rendez_vous rdv JOIN medecin m ON rdv.id_medecin = m.id_medecin
+UPDATE medecin SET specialite = 'cardiologue' WHERE specialite = 'cradiologue';
+SELECT * FROM medecin

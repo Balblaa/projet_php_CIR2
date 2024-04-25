@@ -25,8 +25,16 @@ function dbRequestLieu($conn){
 }
 
 function dbRequestRdv($conn, $nom, $spe, $lieu, $genre){
+
+  if($spe == 'tous'){
+    $spe = '%'; 
+  }
+  if($lieu == 'tous'){
+    $lieu = '%';
+  }
+
   $requete = $conn->prepare('SELECT m.nom, m.prenom, m.specialite, m.localisation, r.date, r.heure FROM genre g JOIN (medecin m JOIN rendez_vous r ON m.id_medecin = r.id_medecin) ON g.id_genre = m.id_genre 
-  WHERE m.nom LIKE :nom AND m.specialite = :specialite AND m.localisation = :localisation AND g.id_genre = :genre AND r.disponible');
+  WHERE m.nom LIKE :nom AND m.specialite LIKE :specialite AND m.localisation LIKE :localisation AND g.id_genre = :genre AND r.disponible');
   $nom = $nom . '%';
   $requete->bindParam(':nom', $nom);
   $requete->bindParam(':specialite', $spe);
@@ -36,16 +44,11 @@ function dbRequestRdv($conn, $nom, $spe, $lieu, $genre){
   $info = $requete->fetchAll();
   return $info;
 }
+
+function dbRegisterRdv($id_rdv){
+  
+}
 /*
-  foreach ($info as $ligne) {
-    echo "<div class=\"card\" style=\"width: 18rem;\">";
-    echo "  <div class=\"card-body\">";
-    echo "    <h5 class=\"card-title\">Rendez vous avec Dr.".$ligne[0]."</h5>";
-    echo "    <p class=\"card-text\">Dr.".$ligne[0]." ".$ligne[1]."<br>Le ".$ligne[3]." à ".$ligne[4]."<br>specialiste en ".$ligne[2]."</p>";
-    echo "    <form method=\"post\"><input type=\"hidden\" value=".$ligne[5]." name=\"reservation\"><button class=\"btn btn-primary\" type=\"submit\">prendre ce rendez-vous</a></form>";
-    echo "  </div>";
-    echo "</div>";
-  }
 
   //php pour attribuer une réservation à un utilisateur
 
