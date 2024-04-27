@@ -9,6 +9,7 @@
     $request = explode('/', $request);
     $requestRessource = array_shift($request);
 
+    // GET
     if($type_request == 'GET' and $requestRessource == "specialite"){
         $specialites = dbRequestspe($conn);
         echo json_encode($specialites);
@@ -22,8 +23,9 @@
         echo json_encode($rendezvous);
     }
 
-    /*if($type_request == 'POST' and $requestRessource == "prendre_rdv"){
-        $reussite = ajoutrdv($conn, $_POST['id_rendez']);
+    // POST
+    if($type_request == 'POST' and $requestRessource == "prendre_rdv"){
+        $reussite = dbRegisterRdv($conn, $_POST['idRdv']);
         echo $reussite;
-    }*/
+    }
 ?>

@@ -33,7 +33,7 @@ function dbRequestRdv($conn, $nom, $spe, $lieu, $genre){
     $lieu = '%';
   }
 
-  $requete = $conn->prepare('SELECT m.nom, m.prenom, m.specialite, m.localisation, r.date, r.heure FROM genre g JOIN (medecin m JOIN rendez_vous r ON m.id_medecin = r.id_medecin) ON g.id_genre = m.id_genre 
+  $requete = $conn->prepare('SELECT m.nom, m.prenom, m.specialite, m.localisation, r.date, r.heure, r.id_rendez_vous FROM genre g JOIN (medecin m JOIN rendez_vous r ON m.id_medecin = r.id_medecin) ON g.id_genre = m.id_genre 
   WHERE m.nom LIKE :nom AND m.specialite LIKE :specialite AND m.localisation LIKE :localisation AND g.id_genre = :genre AND r.disponible');
   $nom = $nom . '%';
   $requete->bindParam(':nom', $nom);
@@ -45,8 +45,8 @@ function dbRequestRdv($conn, $nom, $spe, $lieu, $genre){
   return $info;
 }
 
-function dbRegisterRdv($id_rdv){
-  
+function dbRegisterRdv($conn, $id_rdv){
+  return $id_rdv;
 }
 /*
 

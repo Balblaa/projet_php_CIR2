@@ -68,15 +68,15 @@ function displayRdv(reponse) {
 
             poulpe = reponse[i];
 
-            texte += "<div class=\"card\" style=\"width: 18rem;\">";
+            texte = "<div class=\"card\" style=\"width: 18rem;\">";
             texte += "  <div class=\"card-body\">";
             texte += "    <h5 class=\"card-title\">Rendez vous avec Dr." + poulpe["0"] + " " + poulpe["1"] + "</h5>";
-            texte += "    <p class=\"card-text\">À " + poulpe["3"] + "<br>Le " + poulpe["4"] + " à " + poulpe["5"] + "<br>specialiste en " + poulpe["2"] + "</p>";
-            texte += "    <form method=\"post\"><input type=\"hidden\" value=" + poulpe["5"] + " name=\"reservation\"><button class=\"btn btn-primary\" type=\"submit\">prendre ce rendez-vous</a></form>";
+            texte += "    <p class=\"card-text\">À " + poulpe["3"] + "<br>Le " + poulpe["4"] + " à " + poulpe["5"] + "<br>specialiste " + poulpe["2"] + "</p>";
+            texte += "    <form method=\"post\"><input type=\"hidden\" value=" + poulpe["6"] + " name=\"idRdv\"><button class=\"btn btn-primary\" name=\"reservation\" type=\"submit\">prendre ce rendez-vous</a></form>";
             texte += "  </div>";
             texte += "</div>";
 
-            bobby.innerHTML = texte ;
+            bobby.innerHTML += texte ;
 
         }
 
@@ -89,6 +89,12 @@ function displayRdv(reponse) {
         });
     }
 }
+
+function rdvReserver(reponse) {
+    alert(reponse);
+}
+
+// AjaxRequest
 
 function getSpeDoc() {
 
@@ -117,5 +123,5 @@ function getRdv() {
 }
 
 function addRdv() {
-    
+    ajaxRequest("POST", "../PHP/request.php/rdv/prendre_rdv", rdvReserver);
 }
