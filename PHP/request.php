@@ -24,8 +24,10 @@
     }
 
     // POST
-    if($type_request == 'POST' and $requestRessource == "prendre_rdv"){
-        $reussite = dbRegisterRdv($conn, $_POST['idRdv']);
-        echo $reussite;
+    if($type_request == 'POST' and $requestRessource == "prendreRdv"){
+        if (isset($_POST['idRdv'])){
+            $reussite = dbRegisterRdv($conn, $_POST['idRdv']);
+            echo $reussite;
+        }
     }
 ?>

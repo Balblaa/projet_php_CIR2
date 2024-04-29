@@ -54,7 +54,6 @@ function displayLieuDoc(reponse){
 }
 
 function displayRdv(reponse) {
-    console.log(reponse);
     if (reponse.length == 0){
         document.getElementById("carte").innerHTML = '';
     } else {
@@ -68,30 +67,42 @@ function displayRdv(reponse) {
 
             poulpe = reponse[i];
 
-            texte = "<div class=\"card\" style=\"width: 18rem;\">";
+            texte += "<div class=\"card\" style=\"width: 18rem;\">";
             texte += "  <div class=\"card-body\">";
             texte += "    <h5 class=\"card-title\">Rendez vous avec Dr." + poulpe["0"] + " " + poulpe["1"] + "</h5>";
             texte += "    <p class=\"card-text\">À " + poulpe["3"] + "<br>Le " + poulpe["4"] + " à " + poulpe["5"] + "<br>specialiste " + poulpe["2"] + "</p>";
-            texte += "    <form method=\"post\"><input type=\"hidden\" value=" + poulpe["6"] + " name=\"idRdv\"><button class=\"btn btn-primary\" name=\"reservation\" type=\"submit\">prendre ce rendez-vous</a></form>";
+            texte += "    <form method=\"POST\"><button class=\"btn btn-primary\" value=" + poulpe["6"] + " name=\"reservation\" type=\"submit\">prendre ce rendez-vous</a></form>";
             texte += "  </div>";
             texte += "</div>";
 
-            bobby.innerHTML += texte ;
+            bobby.innerHTML = texte ;
 
         }
-
+        
         let liste_rdv = document.getElementsByName('reservation');
         liste_rdv.forEach(element => {
             element.addEventListener('click', function(event){
                 event.preventDefault();
-                addRdv();
+                addRdv(element.value);
             })
         });
     }
 }
 
 function rdvReserver(reponse) {
-    alert(reponse);
+    reponse = reponse[0]["reussi"];
+    // reponse : 0 => échec de la reservation (utilisateur non connecter)
+    // reponse : 1 => réussite de la réservation
+
+    if (reponse == 1){
+        alert("Votre rendez vous a été rajouter avec succès !");
+    } else{
+        if (reponse == 0){
+            alert("Vous n'êtes pas connecté !!");
+        }
+    }
+
+    getRdv();
 }
 
 // AjaxRequest
@@ -122,6 +133,8 @@ function getRdv() {
 
 }
 
-function addRdv() {
-    ajaxRequest("POST", "../PHP/request.php/rdv/prendre_rdv", rdvReserver);
+function addRdv(idRdv) {
+
+    ajaxRequest("POST", "../PHP/request.php/prendreRdv", rdvReserver, "idRdv=" + idRdv);
+
 }

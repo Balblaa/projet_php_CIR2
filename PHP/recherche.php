@@ -1,7 +1,6 @@
 <?php
   //php pour trouvé afficher les reservation disponible a partir des demande du client
 function dbRequestMedic($conn, $spe, $lieu){
-  session_start();
   $requete = $conn->prepare('SELECT m.nom, m.prenom, m.specialite, rdv.date, rdv.heure, rdv.id_rendez_vous FROM medecin m JOIN rendez_vous rdv ON m.id_medecin = rdv.id_medecin WHERE m.specialite=:specialite AND m.localisation=:lieu AND rdv.disponible = \'1\'');
   $requete->bindParam(':specialite', $spe);
   $requete->bindParam(':lieu', $lieu);
@@ -45,15 +44,11 @@ function dbRequestRdv($conn, $nom, $spe, $lieu, $genre){
   return $info;
 }
 
-function dbRegisterRdv($conn, $id_rdv){
-  return $id_rdv;
-}
-/*
+function dbRegisterRdv($conn, $idRdv){
+  // pour attribuer une réservation à un utilisateur
 
-  //php pour attribuer une réservation à un utilisateur
-
-  $id = $_POST['reservation'];
-  if($id != "" && $_SESSION['mail'] != ""){
+  session_start();
+  if($idRdv != "" && $_SESSION['mail'] != ""){
     // le rendez_vous n'est plus disponible
     $requete = $conn->prepare('UPDATE rendez_vous SET disponible = \'0\' WHERE id_rendez_vous = :id');
     $requete->bindParam(':id', $id);
@@ -65,15 +60,11 @@ function dbRegisterRdv($conn, $id_rdv){
     $requete->bindParam(':adresse', $_SESSION['mail']);
     $requete->execute();
 
-    echo '<script language="Javascript">
-    alert("Vous avez réserver un rendez_vous")
-    </script>';
-
+    return "[{\"reussi\" : 1, \"0\" : 1}]";
   } else {
-    if ($id != "" && $_SESSION['mail'] == ""){
-      echo '<script language="Javascript">
-      alert("Connecter vous avant de réserver")
-      </script>'; 
+    if ($idRdv != "" && $_SESSION['mail'] == ""){
+      return "[{\"reussi\" : 0, \"0\" : 0}]";
     }
-  }*/
+  }
+}
 ?>
