@@ -11,7 +11,7 @@
       return $rdv;
   
     } else {
-      return "[{\"echec\" : 1, \"0\" : 1}]";
+      return json_decode("[{\"echec\" : 1, \"0\" : 1}]");
     }
   }
  
