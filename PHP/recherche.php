@@ -51,12 +51,12 @@ function dbRegisterRdv($conn, $idRdv){
   if($idRdv != "" && $_SESSION['mail'] != ""){
     // le rendez_vous n'est plus disponible
     $requete = $conn->prepare('UPDATE rendez_vous SET disponible = \'0\' WHERE id_rendez_vous = :id');
-    $requete->bindParam(':id', $id);
+    $requete->bindParam(':id', $idRdv);
     $requete->execute();
 
     // on lie dans les reserves le rendez_vous et l'utilisateur
     $requete = $conn->prepare('INSERT INTO reserver (id_rendez_vous, adresse_email) VALUES (:id_rdv, :adresse)');
-    $requete->bindParam(':id_rdv', $id);
+    $requete->bindParam(':id_rdv', $idRdv);
     $requete->bindParam(':adresse', $_SESSION['mail']);
     $requete->execute();
 
