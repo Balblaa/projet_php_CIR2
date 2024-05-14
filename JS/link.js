@@ -79,39 +79,37 @@ function DisplayInscription(){
 
         <h1>Inscription</h1>
 
-        <form action="inscription.html" method="post">
-            <div class="ligne_form">
-                <label for="formGroupExampleInput">Nom</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nom" name="Nom" >
-            </div>
-            <div class="ligne_form">
-                <label for="formGroupExampleInput2">Prenom</label>
-                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Prénom" name="Prenom" >
-            </div>
-            <div class="ligne_form">
-                <label for="formGroupExampleInput">Telephone</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Téléphone" name="Telephone" >
-            </div>
-            <div class="ligne_form">
-                <label for="formGroupExampleInput2">Adresse Mail</label>
-                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Adresse Mail" name="Mail" >
-            </div>
-            <div class="ligne_form">
-                <label for="formGroupExampleInput">Adresse Mail</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Adresse Mail ( Vérification )" name="Mail_verif">
-            </div>
-            <div class="ligne_form">
-                <label for="formGroupExampleInput2">Mot de Passe</label>
-                <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="Mot de Passe" name="Mdp">
-            </div>
-            <div class="ligne_form">
-                <label for="formGroupExampleInput">Mot de Passe</label>
-                <input type="password" class="form-control" id="formGroupExampleInput" placeholder="Mot de Passe ( Vérification )" name="Mdp_verif">
-            </div>
+        <div class="ligne_form">
+            <label for="formGroupExampleInput">Nom</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nom" name="Nom" >
+        </div>
+        <div class="ligne_form">
+            <label for="formGroupExampleInput2">Prenom</label>
+            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Prénom" name="Prenom" >
+        </div>
+        <div class="ligne_form">
+            <label for="formGroupExampleInput">Telephone</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Téléphone" name="Telephone" >
+        </div>
+        <div class="ligne_form">
+            <label for="formGroupExampleInput2">Adresse Mail</label>
+            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Adresse Mail" name="Mail" >
+        </div>
+        <div class="ligne_form">
+            <label for="formGroupExampleInput">Adresse Mail</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Adresse Mail ( Vérification )" name="Mail_verif">
+        </div>
+        <div class="ligne_form">
+            <label for="formGroupExampleInput2">Mot de Passe</label>
+            <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="Mot de Passe" name="Mdp">
+        </div>
+        <div class="ligne_form">
+            <label for="formGroupExampleInput">Mot de Passe</label>
+            <input type="password" class="form-control" id="formGroupExampleInput" placeholder="Mot de Passe ( Vérification )" name="Mdp_verif">
+        </div>
 
-            <button type="submit" id="boumit">Valider</button> <!--boumit le bouton qui submit-->
+        <button type="button" class="btn btn-primary" onclick="addUser()">Valider</button>
         
-        </form>
 
         <button class="bobby" type="button" onclick="DisplayConnexion()">J’ai déjà un compte !</button>
     

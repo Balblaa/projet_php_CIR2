@@ -14,6 +14,4 @@
       return json_decode("[{\"echec\" : 1, \"0\" : 1}]");
     }
   }
- 
-
 ?>
