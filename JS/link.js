@@ -112,7 +112,7 @@ function DisplayInscription(){
         
         </form>
 
-        <a href="../PHP/authentification.php">J’ai déjà un compte !</a>
+        <button class="bobby" type="button" onclick="DisplayConnexion()">J’ai déjà un compte !</button>
     
     </div>
     `;
@@ -141,7 +141,7 @@ function DisplayConnexion(){
             <button type="submit" class="btn btn-primary" id="boumit">Submit</button> <!--boumit le bouton qui submit-->
         </form>
 
-        <a href="inscription.php">Pas de compte, inscrivez-vous !</a>
+        <button class="bobby" type="button" onclick="DisplayInscription()">Pas de compte, inscrivez-vous !</button>
         
     </div>
     `;
