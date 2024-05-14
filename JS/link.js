@@ -4,7 +4,7 @@ function DisplayAccueil(){
     document.getElementById("main").innerHTML = `
         <div class="doctopus">
             <div class="card-body">
-                <h1>BIENVENUE sur Doct’opus</h1>
+                <h1>BIENVENUE sur Doct’Opus</h1>
             </div>
         </div>
 
@@ -12,14 +12,15 @@ function DisplayAccueil(){
             <div class="container-fluid">
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <button id="prout" type="submit" onclick="DisplayRecherche()">Search</button>
                 </form>
             </div>
         </nav>
 
         <div class="doctopus">
             <div class="card-body">
-                This is some text within a card body.
+                <p>Doct'Opus vous permet de trouver et de réserver facilement un rendez-vous avec un professionnel de santé près de chez vous.
+                <br>Découvrez les services, les engagements et l'application de Doct'Opus pour gérer votre santé et celle de vos proches.</p>
             </div>
         </div>
     `;
@@ -33,10 +34,10 @@ function DisplayRecherche(){
                 <select class="custom-select custom-select-sm" name="specialite">
                 </select>
             </div>
-            <div class="container-fluid">
-                <label>Lieu :</label>
-                <select class="custom-select custom-select-sm" name="lieu">
 
+            <div class="container-fluid">
+                <label>Lieu : </label>
+                <select class="custom-select custom-select-sm" name="lieu">
                 </select>
             </div>
 
@@ -52,7 +53,7 @@ function DisplayRecherche(){
             <div class="container-fluid">
                 <label>Nom du médecin</label>
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="nom">
-                <button class="btn btn-outline-success" type="button" id="bouton_recherche" onclick="getRdv()">Search</button>
+                <button type="button" id="bouton_recherche" onclick="getRdv()">Search</button>
             </div>
 
         </form>
@@ -108,7 +109,7 @@ function DisplayInscription(){
                 <input type="password" class="form-control" id="formGroupExampleInput" placeholder="Mot de Passe ( Vérification )" name="Mdp_verif">
             </div>
 
-            <button type="submit" class="btn btn-primary">Valider</button>
+            <button type="submit" id="boumit">Valider</button> <!--boumit le bouton qui submit-->
         
         </form>
 
@@ -138,7 +139,7 @@ function DisplayConnexion(){
                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                 <label class="form-check-label" for="exampleCheck1">Check me out</label>
             </div>-->
-            <button type="submit" class="btn btn-primary" id="boumit">Submit</button> <!--boumit le bouton qui submit-->
+            <button type="submit" id="boumit">Submit</button> <!--boumit le bouton qui submit-->
         </form>
 
         <button class="bobby" type="button" onclick="DisplayInscription()">Pas de compte, inscrivez-vous !</button>
