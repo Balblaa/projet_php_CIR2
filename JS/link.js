@@ -52,7 +52,7 @@ function DisplayRecherche(){
             <div class="container-fluid">
                 <label>Nom du médecin</label>
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="nom">
-                <button class="btn btn-outline-success" type="button" id="bouton_recherche" onclick="getRdv()">Search</button>
+                <button class="btn btn-outline-success" type="button" onclick="getRdv()">Search</button>
             </div>
 
         </form>
@@ -78,39 +78,37 @@ function DisplayInscription(){
 
         <h1>Inscription</h1>
 
-        <form action="inscription.html" method="post">
-            <div class="ligne_form">
-                <label for="formGroupExampleInput">Nom</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nom" name="Nom" >
-            </div>
-            <div class="ligne_form">
-                <label for="formGroupExampleInput2">Prenom</label>
-                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Prénom" name="Prenom" >
-            </div>
-            <div class="ligne_form">
-                <label for="formGroupExampleInput">Telephone</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Téléphone" name="Telephone" >
-            </div>
-            <div class="ligne_form">
-                <label for="formGroupExampleInput2">Adresse Mail</label>
-                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Adresse Mail" name="Mail" >
-            </div>
-            <div class="ligne_form">
-                <label for="formGroupExampleInput">Adresse Mail</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Adresse Mail ( Vérification )" name="Mail_verif">
-            </div>
-            <div class="ligne_form">
-                <label for="formGroupExampleInput2">Mot de Passe</label>
-                <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="Mot de Passe" name="Mdp">
-            </div>
-            <div class="ligne_form">
-                <label for="formGroupExampleInput">Mot de Passe</label>
-                <input type="password" class="form-control" id="formGroupExampleInput" placeholder="Mot de Passe ( Vérification )" name="Mdp_verif">
-            </div>
+        <div class="ligne_form">
+            <label for="formGroupExampleInput">Nom</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nom" name="Nom" >
+        </div>
+        <div class="ligne_form">
+            <label for="formGroupExampleInput2">Prenom</label>
+            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Prénom" name="Prenom" >
+        </div>
+        <div class="ligne_form">
+            <label for="formGroupExampleInput">Telephone</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Téléphone" name="Telephone" >
+        </div>
+        <div class="ligne_form">
+            <label for="formGroupExampleInput2">Adresse Mail</label>
+            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Adresse Mail" name="Mail" >
+        </div>
+        <div class="ligne_form">
+            <label for="formGroupExampleInput">Adresse Mail</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Adresse Mail ( Vérification )" name="Mail_verif">
+        </div>
+        <div class="ligne_form">
+            <label for="formGroupExampleInput2">Mot de Passe</label>
+            <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="Mot de Passe" name="Mdp">
+        </div>
+        <div class="ligne_form">
+            <label for="formGroupExampleInput">Mot de Passe</label>
+            <input type="password" class="form-control" id="formGroupExampleInput" placeholder="Mot de Passe ( Vérification )" name="Mdp_verif">
+        </div>
 
-            <button type="submit" class="btn btn-primary">Valider</button>
+        <button type="button" class="btn btn-primary" onclick="addUser()">Valider</button>
         
-        </form>
 
         <a href="../PHP/authentification.php">J’ai déjà un compte !</a>
     

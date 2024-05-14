@@ -2,6 +2,7 @@
     require_once("../DB/database.php");
     require_once("recherche.php");
     require_once("rendez_vous.php");
+    require_once("inscription.php");
 
     $conn = dbConnect();
     $type_request = $_SERVER['REQUEST_METHOD'];
@@ -33,11 +34,22 @@
         echo json_encode($reponse);
     }
 
-    // POST
+    // POST recherche
     if($type_request == 'POST' and $requestRessource == "prendreRdv"){
         if (isset($_POST['idRdv'])){
             $reussite = dbRegisterRdv($conn, $_POST['idRdv']);
             echo $reussite;
         }
+    }
+    // POST inscription
+    if($type_request == 'POST' and $requestRessource == "addUser"){
+        $reussite = dbAddUser($conn,  $_POST["Nom"], 
+        $_POST["Prenom"], 
+        $_POST["Telephone"],
+        $_POST["Mail"], 
+        $_POST["Mdp"], 
+        $_POST["MailVerif"], 
+        $_POST["MdpVerif"]);
+        echo $reussite;
     }
 ?>
