@@ -28,6 +28,10 @@
         $mesRdv = dbRequestMesRdv($conn);
         echo json_encode($mesRdv);
     }
+    if($type_request == 'GET' and $requestRessource == "reprendreRdv"){
+        $reponse = dbRequestRdv($conn, $_GET['nom'], "tous", "tous", 2);
+        echo json_encode($reponse);
+    }
 
     // POST
     if($type_request == 'POST' and $requestRessource == "prendreRdv"){

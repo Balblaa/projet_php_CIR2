@@ -31,14 +31,22 @@ function dbRequestRdv($conn, $nom, $spe, $lieu, $genre){
   if($lieu == 'tous'){
     $lieu = '%';
   }
-
-  $requete = $conn->prepare('SELECT m.nom, m.prenom, m.specialite, m.localisation, r.date, r.heure, r.id_rendez_vous FROM genre g JOIN (medecin m JOIN rendez_vous r ON m.id_medecin = r.id_medecin) ON g.id_genre = m.id_genre 
-  WHERE m.nom LIKE :nom AND m.specialite LIKE :specialite AND m.localisation LIKE :localisation AND g.id_genre = :genre AND r.disponible');
+  if($genre == 2){
+    $requete = $conn->prepare('SELECT m.nom, m.prenom, m.specialite, m.localisation, r.date, r.heure, r.id_rendez_vous FROM genre g JOIN (medecin m JOIN rendez_vous r ON m.id_medecin = r.id_medecin) ON g.id_genre = m.id_genre 
+    WHERE m.nom LIKE :nom AND m.specialite LIKE :specialite AND m.localisation LIKE :localisation AND r.disponible');
+  } else {
+    $requete = $conn->prepare('SELECT m.nom, m.prenom, m.specialite, m.localisation, r.date, r.heure, r.id_rendez_vous FROM genre g JOIN (medecin m JOIN rendez_vous r ON m.id_medecin = r.id_medecin) ON g.id_genre = m.id_genre 
+    WHERE m.nom LIKE :nom AND m.specialite LIKE :specialite AND m.localisation LIKE :localisation AND g.id_genre = :genre AND r.disponible');
+  }
   $nom = $nom . '%';
   $requete->bindParam(':nom', $nom);
   $requete->bindParam(':specialite', $spe);
   $requete->bindParam(':localisation', $lieu);
-  $requete->bindParam(':genre', $genre);
+  
+  if($genre != 2){
+    $requete->bindParam(':genre', $genre);
+  }
+
   $requete->execute();
   $info = $requete->fetchAll();
   return $info;
