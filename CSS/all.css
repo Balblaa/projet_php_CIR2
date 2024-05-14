@@ -7,11 +7,22 @@ main{
 
 }
 
+html{
+
+    background-color: #F6FBFF;
+}
+
+body{
+
+    background-color: #F6FBFF;
+
+}
+
 .doctopus{
 
     margin: 40px;
     padding: 25px;
-    border-radius: 0%;
+    border-radius: 0.5cm;
 
     background-color: #00B4D8;
 
@@ -27,7 +38,7 @@ main{
     margin-right: 50px;
 
     padding: 15px;
-    border-radius: 0%;
+    border-radius: 0.5cm;
 
     background-color: #00B4D8;
 
@@ -37,23 +48,33 @@ main{
 
 #prout{
 
+    padding: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
     border-color: black;
     color: black;
     text-align: center;
 
-    border-radius: 15%;
+    background-color: #F6FBFF;
+
+    border-radius: 0.3cm;
     box-shadow: none;
 
 }
 
 .bobby{
 
-    
+    background-color: #F6FBFF;
 
-    border: none;
-    border-color: #00B4D8;
-    color: black;
-    background-color: #FFFFFF;
+    border-color: #0077B6;
+    color: #0077B6;
+    border-radius: 0.2cm;
+
+    padding: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
 }
 
 #bouton_recherche{
@@ -61,10 +82,14 @@ main{
     margin: 10px;
     margin-left: 0px;
 
-    border-color: black;
-    border-radius: 15%;
+    padding: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 
-    background-color: #FFFFFF;
+    border-color: black;
+    border-radius: 0.3cm;
+
+    background-color: #F6FBFF;
 
     color: black;
     text-align: center;
@@ -91,6 +116,13 @@ main{
     padding-bottom: 5px;
 
     border-color: black;
-    border-radius: 15%;
+    border-radius: 0.3cm;
+
+}
+
+.ligne_form{
+
+    margin-top: 10px;
+    margin-bottom: 5px;
 
 }
