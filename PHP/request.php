@@ -3,6 +3,7 @@
     require_once("recherche.php");
     require_once("rendez_vous.php");
     require_once("inscription.php");
+    require_once("authentification.php");
 
     $conn = dbConnect();
     $type_request = $_SERVER['REQUEST_METHOD'];
@@ -34,7 +35,7 @@
         echo json_encode($reponse);
     }
 
-    // POST recherche
+    // PUT recherche
     if($type_request == 'POST' and $requestRessource == "prendreRdv"){
         if (isset($_POST['idRdv'])){
             $reussite = dbRegisterRdv($conn, $_POST['idRdv']);
@@ -51,5 +52,14 @@
         $_POST["MailVerif"], 
         $_POST["MdpVerif"]);
         echo $reussite;
+    }
+    // POST Connection
+    if($type_request == 'POST' and $requestRessource == "ConnectUser"){
+        $reussite = dbConnectUser($conn, $_POST["mail"], $_POST["mdp"]);
+        echo $reussite;
+    }
+    if($type_request == "POST" and $requestRessource == "DisconnectUser"){
+        $succes = dbDisconnectUser();
+        echo $succes;
     }
 ?>

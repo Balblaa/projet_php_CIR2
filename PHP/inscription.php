@@ -1,6 +1,5 @@
 <?php
 function dbAddUser($conn,  $nom, $prenom, $telephone, $mail, $mdp, $mailVerif, $mdpVerif){
-  $conn = dbConnect();
   $verification = $conn->prepare('SELECT telephone FROM utilisateur WHERE adresse_email = :email');
   $verification->bindParam(':email', $mail);
   $verification->execute();
