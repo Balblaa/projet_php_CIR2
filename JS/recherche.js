@@ -60,11 +60,11 @@ function displayRdv(reponse) {
 
             poulpe = reponse[i];
 
-            texte += "<div class=\"card\" style=\"width: 18rem;\">";
+            texte += "<div class=\"card\" style=\"width: 18rem; margin-top: 10px; margin-bottom: 5px;\">";
             texte += "  <div class=\"card-body\">";
             texte += "    <h5 class=\"card-title\">Rendez vous avec Dr." + poulpe["0"] + " " + poulpe["1"] + "</h5>";
             texte += "    <p class=\"card-text\">À " + poulpe["3"] + "<br>Le " + poulpe["4"] + " à " + poulpe["5"] + "<br>specialiste " + poulpe["2"] + "</p>";
-            texte += "    <form method=\"POST\"><button class=\"btn btn-primary\" value=" + poulpe["6"] + " name=\"reservation\" type=\"submit\">prendre ce rendez-vous</a></form>";
+            texte += "    <form method=\"POST\"><button class=\"bobby\" value=" + poulpe["6"] + " name=\"reservation\" type=\"submit\">prendre ce rendez-vous</button></form>";
             texte += "  </div>";
             texte += "</div>";
 
