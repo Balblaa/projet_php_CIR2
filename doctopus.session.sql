@@ -1,2 +1,1 @@
-
-SELECT * FROM medecin
+SELECT * FROM rendez_vous;
