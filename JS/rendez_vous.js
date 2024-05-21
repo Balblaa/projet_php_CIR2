@@ -9,11 +9,11 @@ function displayMesRdv(reponse){
             texte = ""
             texte += "<div>";
             reponse.forEach(ligne => {
-                texte += "<div class=\"card\" style=\"width: 18rem;\">";
+                texte += "<div class=\"card\" style=\"width: 18rem; margin-top: 10px; margin-bottom: 5px;\">";
                 texte += "  <div class=\"card-body\">";
                 texte += "    <h5 class=\"card-title\">Dr." + ligne[3] + ", " + ligne[4] + " à " + ligne[5] + "</h5>";
                 texte += "    <p class=\"card-text\">Rendez vous le : " + ligne[1] + " à " + ligne[2] + "</p>";
-                texte += "    <form method=\"GET\"><button class=\"btn btn-primary\" value=" + ligne[3] + " name=\"reserver\" type=\"submit\">reprendre un rendez-vous ?</a></form>"
+                texte += "    <form method=\"GET\"><button class=\"bobby\" value=" + ligne[3] + " name=\"reserver\" type=\"submit\">reprendre un rendez-vous ?</button></form>"
                 texte += "  </div>";
                 texte += "</div>";
             });
