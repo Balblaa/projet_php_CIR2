@@ -8,7 +8,7 @@ INSERT INTO public.Medecin (id_medecin, Adresse_Email, Nom, Prenom, Telephone, L
 (6, 'doccharlesdarwin@example.com', 'Darwin', 'Charles', 43218765, '789 Rue de Nantes, Nantes', 'docpassword303', 'Généticien', 1);
 
 -- Insertion des rendez-vous
-INSERT INTO public.rendez_vous (Date, Heure, id_medecin) VALUES
+INSERT INTO public.rendez_vous (Date, Heure, id_medecin, ) VALUES
 ('2024-06-01', '10:00:00+02', 1),
 ('2024-06-02', '11:00:00+02', 2),
 ('2024-06-03', '12:00:00+02', 3),
